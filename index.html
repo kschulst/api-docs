@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.7.1">
-<title>Unicorns API</title>
+<title>OpenFarm Producers API</title>
 <style>
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ========================================================================== HTML5 display definitions ========================================================================== */
@@ -725,20 +725,25 @@ b.conum * { color: inherit !important; }
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
-<h1>Unicorns API</h1>
+<h1>OpenFarm Producers API</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel0">
 <li><a href="#overview">Overview</a>
 <ul class="sectlevel1">
+<li><a href="#overview-http-verbs">HTTP verbs</a></li>
+<li><a href="#overview-http-status-codes">HTTP status codes</a></li>
+<li><a href="#overview-headers">Headers</a></li>
+<li><a href="#overview-errors">Errors</a></li>
+<li><a href="#overview-hypermedia">Hypermedia</a>
+<ul class="sectlevel2">
+<li><a href="#overview-hypermedia-common-links">Common links</a></li>
+</ul>
+</li>
 <li><a href="#_playing_with_the_api">Playing with the API</a></li>
 </ul>
 </li>
-<li><a href="#resources">Resources</a>
-<ul class="sectlevel1">
-<li><a href="#resources-actors">Unicorns</a></li>
-</ul>
-</li>
+<li><a href="#resources">Resources</a></li>
 </ul>
 </div>
 </div>
@@ -746,11 +751,177 @@ b.conum * { color: inherit !important; }
 <h1 id="overview" class="sect0"><a class="link" href="#overview">Overview</a></h1>
 <div class="openblock partintro">
 <div class="content">
+Welcome to OpenFarm Producers API! This documentation should help you familiarise yourself with the resources available and how to consume them with HTTP requests.
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview-http-verbs"><a class="link" href="#overview-http-verbs">HTTP verbs</a></h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Welcome&#8230;&#8203;</p>
+<p>The OpenFarm API tries to adhere as closely as possible to standard HTTP and REST conventions in its
+use of HTTP verbs.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Verb</th>
+<th class="tableblock halign-left valign-top">Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GET</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used to retrieve a resource</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>POST</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used to create a new resource</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PUT</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used to update an existing resource</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PATCH</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used to partially update an existing resource</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>DELETE</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used to delete an existing resource</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview-http-status-codes"><a class="link" href="#overview-http-status-codes">HTTP status codes</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The OpenFarm API tries to adhere as closely as possible to standard HTTP and REST conventions in its
+use of HTTP status codes.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Status code</th>
+<th class="tableblock halign-left valign-top">Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>200 OK</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The request completed successfully</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>201 Created</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A new resource has been created successfully. The resource&#8217;s URI is available from the response&#8217;s
+<code>Location</code> header</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>204 No Content</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An update to an existing resource has been applied successfully</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>400 Bad Request</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The request was malformed. The response body will include an error providing further information</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>404 Not Found</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The requested resource does not exist</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview-headers"><a class="link" href="#overview-headers">Headers</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Every response has the following header(s):</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Header</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Authorization</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bearer security token used for accessing the API</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Bearer &lt;JWT token&gt;</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview-errors"><a class="link" href="#overview-errors">Errors</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Whenever an error response (status code &gt;= 400) is returned, the body will contain a JSON object
+that describes the problem. The error object has the following structure:</p>
 </div>
 <div class="paragraph">
-<p>Blah blah blah</p>
+<p>&lt;TODO: Error object structure&gt;</p>
+</div>
+<div class="paragraph">
+<p>For example&#8230;&#8203;
+&lt;TODO: Example http example response&gt;</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview-hypermedia"><a class="link" href="#overview-hypermedia">Hypermedia</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The API uses hypermedia and resources include links to other resources in their
+responses. Responses are in <a href="http://stateless.co/hal_specification.html">Hypertext Application
+Language (HAL)</a> format. Links can be found beneath the <code>_links</code> key. Users of the API should
+not create URIs themselves, instead they should use the above-described links to navigate</p>
+</div>
+<div class="paragraph">
+<p>On a general note, the following links are common for all resources:</p>
+</div>
+<div class="sect2">
+<h3 id="overview-hypermedia-common-links"><a class="link" href="#overview-hypermedia-common-links">Common links</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Link</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">self</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">References the resource itself</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">curies</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The available CURIE mappings, for expanding CURIE namespaced links</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -767,21 +938,20 @@ of a UI, you can import the examples as a Postman Collection.</p>
 </div>
 </div>
 <h1 id="resources" class="sect0"><a class="link" href="#resources">Resources</a></h1>
-<div class="sect1">
-<h2 id="resources-actors"><a class="link" href="#resources-actors">Unicorns</a></h2>
-<div class="sectionbody">
+<div class="openblock partintro">
+<div class="content">
 <div class="paragraph">
-<p>Unicorns blah blah blah</p>
+<p><a href="api/restdocs-demo/index.html">Click here</a></p>
 </div>
 <div class="paragraph">
-<p>Unresolved directive in resources-unicorns.adoc - include::/Users/kenneth/dev/code/play/api-docs/build/generated-snippets/unicorn-docs/get-all/auto-section.adoc[]</p>
+<p>Refer to <a href="document-b.html#section-b">Section B</a> for more information.</p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-11-02 01:31:47 CET
+Last updated 2018-11-02 02:06:41 CET
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
