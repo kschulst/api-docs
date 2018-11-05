@@ -1,0 +1,62 @@
+{
+  "variables" : null,
+  "info" : {
+    "name" : "demo-restdocs - latest",
+    "description" : "Postman collection for demo-restdocs Vlatest (generated at 2018-11-05T11:09:31.731Z)",
+    "schema" : "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item" : [ {
+    "name" : "sdlfkjsdflkj",
+    "description" : null,
+    "item" : null,
+    "request" : {
+      "url" : "{{protocol}}://{{host}}/unicorns/{{unicornId}}",
+      "method" : "GET",
+      "description" : null,
+      "header" : [ {
+        "key" : "Accept",
+        "value" : "application/json",
+        "description" : null
+      } ],
+      "body" : {
+        "mode" : "raw",
+        "raw" : "",
+        "urlEncoded" : null,
+        "formdata" : null
+      }
+    },
+    "event" : null,
+    "itemList" : null
+  } ],
+  "auth" : {
+    "type" : "bearer",
+    "bearer" : [ {
+      "value" : "{{auth_token}}",
+      "key" : "token",
+      "type" : "string"
+    } ]
+  },
+  "itemList" : [ {
+    "name" : "sdlfkjsdflkj",
+    "description" : null,
+    "item" : null,
+    "request" : {
+      "url" : "{{protocol}}://{{host}}/unicorns/{{unicornId}}",
+      "method" : "GET",
+      "description" : null,
+      "header" : [ {
+        "key" : "Accept",
+        "value" : "application/json",
+        "description" : null
+      } ],
+      "body" : {
+        "mode" : "raw",
+        "raw" : "",
+        "urlEncoded" : null,
+        "formdata" : null
+      }
+    },
+    "event" : null,
+    "itemList" : null
+  } ]
+}
