@@ -2,7 +2,7 @@
   "variables" : null,
   "info" : {
     "name" : "demo-restdocs - latest",
-    "description" : "Postman collection for demo-restdocs Vlatest (generated at 2018-11-05T09:22:38.900Z)",
+    "description" : "Postman collection for demo-restdocs Vlatest (generated at 2018-11-05T10:49:46.767Z)",
     "schema" : "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
   },
   "item" : [ {
@@ -10,7 +10,7 @@
     "description" : null,
     "item" : null,
     "request" : {
-      "url" : "{{protocol}}://{{host}}/unicorns",
+      "url" : "{{protocol}}://{{host}}/unicorns/{{unicornId}}",
       "method" : "GET",
       "description" : null,
       "header" : [ {
@@ -41,7 +41,7 @@
     "description" : null,
     "item" : null,
     "request" : {
-      "url" : "{{protocol}}://{{host}}/unicorns",
+      "url" : "{{protocol}}://{{host}}/unicorns/{{unicornId}}",
       "method" : "GET",
       "description" : null,
       "header" : [ {
